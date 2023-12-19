@@ -1,5 +1,5 @@
-import BackDrop from "./BackDrop";
+import Backdrop from "./Backdrop";
 import CameraRig from "./CameraRig";
 import Shirt from "./Shirt";
 
-export { BackDrop, CameraRig, Shirt }
+export { Backdrop, CameraRig, Shirt }

@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Environment, Center } from "@react-three/drei";
 
-import { BackDrop, CameraRig, Shirt } from "../canvas";
+import { Backdrop, CameraRig, Shirt } from "../canvas";
 
 const ConvasModel = () => {
   return (
@@ -10,7 +10,7 @@ const ConvasModel = () => {
       <ambientLight intensity={0.5}/>
       <Environment preset="city"/>
       <CameraRig>
-        <BackDrop/>
+        <Backdrop/>
         <Center>
           <Shirt/>
         </Center>
