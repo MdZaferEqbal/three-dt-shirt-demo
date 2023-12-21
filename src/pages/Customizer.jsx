@@ -112,14 +112,14 @@ const Customizer = () => {
                 <Tab key={tab.name} tab={tab} handleClick={() => {
                   if(activeEditorTab === tab.name){
                     setActiveEditorTab("")
-                  }else{setActiveEditorTab(tab.name)}
+                  } else { setActiveEditorTab(tab.name) }
                 }}/>
               ))}
               {generateTabContent()}
             </div>
           </div>
         </motion.div>
-        <motion.div className='absolute z-10 top-5 right-5' {...slideAnimation('right')}>
+        <motion.div className='absolute z-10 top-5 right-5' {...slideAnimation('right', "opacity-0")}>
           <CustomButton type="filled" title="Go Back" handleClick={() => state.intro = true}
             customStyles="w-fit px-4 py-2.5 font-bold text-sm"/>
         </motion.div>
