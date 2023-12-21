@@ -1,25 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSnapshot } from 'valtio';
 
-import config from '../config/config';
 import state from "../store";
 import { download } from "../assets";
-import { downloadCanvasToImage, reader } from "../config/helpers";
+import { downloadCanvasToImage, reader, hexToRgba } from "../config/helpers";
 import { EditorTabs, FilterTabs, DecalTypes } from "../config/constants";
-import { slideAnimation, fadeAnimation } from "../config/motion";
+import { slideAnimation } from "../config/motion";
 import { CustomButton, AIPicker, ColorPicker, FilePicker, Tab } from "../components";
 
 const Customizer = () => {
   const snap = useSnapshot(state);
   const [file, setFile] = useState('');
   const [prompt, setPrompt] = useState('');
+  const [isHovering, setIsHovering] = useState(false);
   const [generatingImg, setGeneratingImg] = useState(false);
   const [activeEditorTab, setActiveEditorTab] = useState("");
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShirt: false,
   });
+  const downloadButtonStyle = isHovering ? { backgroundColor: hexToRgba(snap.color), } : {};
 
   const handleSubmit = async (type) => {
     if(!prompt) return alert("Please enter a Prompt.");
@@ -128,6 +129,14 @@ const Customizer = () => {
             <Tab key={tab.name} tab={tab} isFilterTab isActiveTab={activeFilterTab[tab.name]}
               handleClick={() => handleActiveFilterTab(tab.name)}/>
           ))}
+          <button className="download-btn" onClick={downloadCanvasToImage} style={downloadButtonStyle}
+            onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+            <img
+              src={download}
+              alt="download_image"
+              className="w-3/5 h-3/5 object-contain"
+            />
+          </button>
         </motion.div>
         </>
       )}

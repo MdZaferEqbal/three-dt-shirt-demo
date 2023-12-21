@@ -1,11 +1,12 @@
 import { useSnapshot } from "valtio";
 
 import state from "../store";
+import { hexToRgba } from "../config/helpers";
 
 const Tab = ({ tab, isFilterTab, isActiveTab, handleClick }) => {
   const snap = useSnapshot(state);
 
-  const activeStyles = isFilterTab && isActiveTab ? { backgroundColor: snap.color, opacity: 0.5 } : 
+  const activeStyles = isFilterTab && isActiveTab ? { backgroundColor: hexToRgba(snap.color), backdropFilter: "blur(4px)" } : 
     { backgroundColor: "transparent", opacity: 1 }
 
   return (

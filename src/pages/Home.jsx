@@ -10,7 +10,7 @@ import TShirtIcon from "../assets/TShirtIcon.jsx";
 const Home = () => {
   const snap = useSnapshot(state);
   const customTextColor = {
-    color: snap.color === "#000000" ? "#ffffff" : snap.color,
+    color: snap.color === "#000000" || snap.color === "#353934" ? "#ffffff" : snap.color,
   }
 
   return (
