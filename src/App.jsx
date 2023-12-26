@@ -9,7 +9,8 @@ function App() {
   const snap = useSnapshot(state);
 
   return (
-    <main className={`app transition-all ease-in bg-[${getContrastingColor(snap.color)}]`}>
+    <main className={`app transition-all ease-in 
+      ${getContrastingColor(snap.color) === "#000000" ? "bg-black" : "bg-white"}`}>
       <Home/>
       <ConvasModel/>
       <Customizer/>
