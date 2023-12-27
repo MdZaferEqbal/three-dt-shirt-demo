@@ -10,7 +10,7 @@ function App() {
 
   return (
     <main className={`${getContrastingColor(snap.color) === "#000000" ? "bg-black" : "bg-white"}
-    app transition-all ease-in `}>
+    app transition-all ease-in`}>
       <Home/>
       <ConvasModel/>
       <Customizer/>
